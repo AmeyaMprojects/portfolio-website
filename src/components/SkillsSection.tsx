@@ -8,7 +8,7 @@ const skills = {
   Frontend: [
     "HTML5",
     "CSS3",
-    "JavaScript (ES6+)",
+    "JavaScript",
     "TypeScript",
     "React.js",
     "Next.js",

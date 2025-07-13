@@ -34,15 +34,15 @@ const ContactSection = () => {
             <CardContent className="space-y-4 text-foreground">
               <div className="flex items-center space-x-3">
                 <Mail className="text-futures-4" size={20} />
-                <a href="mailto:youremail@example.com" className="hover:underline">youremail@example.com</a>
+                <a href="mailto:ameyam.projects@gmail.com" className="hover:underline">ameyam.projects@gmail.com</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="text-futures-4" size={20} />
-                <span>+1 (123) 456-7890</span> {/* Replace with your phone number */}
+                <span>+91 7045229889</span> {/* Replace with your phone number */}
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="text-futures-4" size={20} />
-                <span>Your City, Your Country</span> {/* Replace with your location */}
+                <span>Mumbai, India</span> {/* Replace with your location */}
               </div>
               <p className="mt-4 text-sm text-foreground/70">
                 Feel free to reach out for collaborations, project inquiries, or just to say hello!
@@ -58,7 +58,7 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Label htmlFor="name" className="text-foreground">Name</Label>
-                  <Input id="name" type="text" placeholder="Your Name" required className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" />
+                  <Input id="name" type="text" placeholder="Ameya Mhatre" required className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" />
                 </div>
                 <div>
                   <Label htmlFor="email" className="text-foreground">Email</Label>

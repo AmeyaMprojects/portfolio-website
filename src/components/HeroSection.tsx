@@ -28,7 +28,7 @@ const HeroSection = () => {
       </div>
 
       <h1 className="text-4xl md:text-6xl font-extrabold text-futures-1 mb-4 leading-tight">
-        Hi, I'm <span className="text-futures-4">[Your Name]</span>,
+        Hi, I'm <span className="text-futures-4">Ameya Mhatre</span>,
         <br className="hidden sm:block" /> a passionate software engineer.
       </h1>
       <p className="text-lg md:text-xl text-foreground max-w-2xl mb-8">
@@ -54,7 +54,7 @@ const HeroSection = () => {
 
       <div className="flex space-x-6">
         <a
-          href="https://linkedin.com/in/yourprofile" // Replace with your LinkedIn URL
+          href="https://www.linkedin.com/in/ameya-mhatre-553003307/" // Replace with your LinkedIn URL
           target="_blank"
           rel="noopener noreferrer"
           className="text-futures-3 hover:text-futures-1 transition-colors"
@@ -63,7 +63,7 @@ const HeroSection = () => {
           <Linkedin size={28} />
         </a>
         <a
-          href="https://github.com/yourprofile" // Replace with your GitHub URL
+          href="https://github.com/AmeyaMprojects" // Replace with your GitHub URL
           target="_blank"
           rel="noopener noreferrer"
           className="text-futures-3 hover:text-futures-1 transition-colors"
@@ -81,7 +81,9 @@ const HeroSection = () => {
           <Twitter size={28} />
         </a>
         <a
-          href="mailto:youremail@example.com" // Replace with your email address
+          href="mailto:ameyam.projects@gmail.com" // Replace with your email address
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-futures-3 hover:text-futures-1 transition-colors"
           aria-label="Email Address"
         >
