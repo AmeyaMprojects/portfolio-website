@@ -62,6 +62,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom colors from user's palette
+        futures: {
+          '1': 'hsl(207, 94%, 28%)', // #044D8C
+          '2': 'hsl(208, 64%, 39%)', // #2469A6
+          '3': 'hsl(204, 32%, 19%)', // #223542
+          '4': 'hsl(203, 67%, 54%)', // #3D9CD9
+          '5': 'hsl(197, 70%, 82%)', // #B3E0F2
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
