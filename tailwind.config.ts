@@ -62,6 +62,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom portfolio colors
+        futures: {
+          '1': 'hsl(var(--futures-1))',
+          '2': 'hsl(var(--futures-2))',
+          '3': 'hsl(var(--futures-3))',
+          '4': 'hsl(var(--futures-4))',
+          '5': 'hsl(var(--futures-5))',
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -49,6 +49,13 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom Portfolio Colors */
+    --futures-1: 207 94% 28%; /* #044D8C */
+    --futures-2: 208 64% 39%; /* #2469A6 */
+    --futures-3: 204 32% 19%; /* #223542 */
+    --futures-4: 203 67% 54%; /* #3D9DD9 */
+    --futures-5: 197 70% 82%; /* #B3E0F2 */
   }
 
   .dark {
@@ -87,6 +94,13 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom Portfolio Colors for Dark Mode (adjust as needed) */
+    --futures-1: 207 94% 48%; /* Darker blue for contrast */
+    --futures-2: 208 64% 59%; /* Medium blue */
+    --futures-3: 204 32% 39%; /* Dark grey/blue */
+    --futures-4: 203 67% 74%; /* Lighter blue */
+    --futures-5: 197 70% 92%; /* Very light blue */
   }
 }
 
@@ -97,5 +111,6 @@
 
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth; /* Enable smooth scrolling */
   }
 }
