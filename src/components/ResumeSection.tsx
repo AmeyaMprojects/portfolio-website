@@ -46,8 +46,56 @@ const timelineData: TimelineItemProps[] = [
 
 const ResumeSection = () => {
   return (
-    <section id="resume" className="py-16 px-4 bg-futures-5/10">
-      <div className="container mx-auto max-w-4xl">
+    <section id="resume" className="py-16 px-4 bg-futures-5/10 relative overflow-hidden">
+      {/* Galaxy Background Effect */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Stars Layer 1 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-indigo-900/20"></div>
+        
+        {/* Animated Stars */}
+        <div className="absolute inset-0">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full opacity-60 animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`,
+              }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Larger Twinkling Stars */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-blue-300/80 rounded-full animate-ping"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 4}s`,
+                animationDuration: `${3 + Math.random() * 3}s`,
+              }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Galaxy Nebula Effect */}
+        <div 
+          className="absolute inset-0 animate-pulse" 
+          style={{ 
+            background: 'radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 50%, rgba(37, 99, 235, 0.1) 100%)',
+            animationDuration: '8s' 
+          }}
+        ></div>
+      </div>
+      
+      {/* Content with higher z-index */}
+      <div className="relative z-10 container mx-auto max-w-4xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-futures-1 mb-12">
           My Resume
         </h2>

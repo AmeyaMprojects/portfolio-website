@@ -5,8 +5,79 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const AboutMeSection = () => {
   return (
-    <section id="about" className="py-16 px-4 bg-background">
-      <div className="container mx-auto max-w-4xl">
+    <section id="about" className="py-16 px-4 bg-background relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Gradient Animation Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-futures-1/5 via-futures-4/5 to-futures-2/5 animate-pulse" style={{ animationDuration: '6s' }}></div>
+        
+        {/* Floating Particles */}
+        <div className="absolute inset-0">
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-futures-3/30 rounded-full animate-bounce"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`,
+              }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Floating Bubbles */}
+        <div className="absolute inset-0">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-4 h-4 bg-futures-1/20 rounded-full animate-ping"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 6}s`,
+                animationDuration: `${4 + Math.random() * 3}s`,
+              }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Moving Geometric Shapes */}
+        <div className="absolute inset-0">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-6 h-6 border border-futures-4/20 rotate-45 animate-spin"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 4}s`,
+                animationDuration: `${8 + Math.random() * 4}s`,
+              }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Glowing Orbs */}
+        <div className="absolute inset-0">
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-8 h-8 bg-futures-2/10 rounded-full blur-sm animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${5 + Math.random() * 3}s`,
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Content with higher z-index */}
+      <div className="relative z-10 container mx-auto max-w-4xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-futures-1 mb-12">
           About Me
         </h2>
