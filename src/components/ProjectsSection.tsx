@@ -76,13 +76,7 @@ const projects: ProjectProps[] = [
     githubLink: "https://github.com/yourprofile/personal-blog",
     liveDemoLink: "https://blog.example.com",
   },
-  {
-    title: "Task Management API",
-    description: "A robust RESTful API for managing tasks, users, and projects. Includes authentication, authorization, and comprehensive error handling. Designed for integration with various frontend clients.",
-    technologies: ["Node.js", "Express", "TypeScript", "JWT", "MongoDB", "Docker"],
-    imageUrl: "https://via.placeholder.com/400x250/2469A6/FFFFFF?text=Task+API",
-    githubLink: "https://github.com/yourprofile/task-api",
-  },
+  
 ];
 
 const ProjectsSection = () => {

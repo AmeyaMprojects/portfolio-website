@@ -32,8 +32,12 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
-        <Link to="/" className="text-lg font-bold text-futures-1 hover:text-futures-4 transition-colors">
-          Ameya Mhatre
+        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <img
+            src="/logo1-removebg-preview.png" // Replace with your logo URL
+            alt="Ameya Mhatre Logo"
+            className="h-12 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}

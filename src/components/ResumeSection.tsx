@@ -34,11 +34,11 @@ const timelineData: TimelineItemProps[] = [
     ],
   },
   {
-    title: "B.S. in Computer Science",
-    subtitle: "University of Technology",
-    date: "Sept 2015 - May 2019",
+    title: "B.Tech.. in Computer Science",
+    subtitle: "Manipal institute of Technology",
+    date: "Sept 2024 - May 2028",
     description: [
-      "Graduated with honors, specializing in Software Engineering and Cybersecurity.",
+      "Graduated with honors, specializing in Data Science and Cybersecurity.",
       "Completed a capstone project on secure data transmission protocols.",
     ],
   },
