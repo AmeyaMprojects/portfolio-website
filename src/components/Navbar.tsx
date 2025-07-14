@@ -6,9 +6,17 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  // Ensure component is mounted before rendering theme-dependent content
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -29,14 +37,24 @@ const Navbar = () => {
     }
   };
 
+  // Get the appropriate logo based on theme
+  const getCurrentLogo = () => {
+    if (!mounted) return "/logo1-removebg-preview.png"; // Default logo during SSR
+    
+    const currentTheme = resolvedTheme || theme;
+    return currentTheme === "dark" 
+      ? "/logo1-removebg-preview.png" // Dark mode logo
+      : "/logo1-dark.png"; // Light mode logo (you'll need to add this)
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
           <img
-            src="/logo1-removebg-preview.png" // Replace with your logo URL
+            src={getCurrentLogo()}
             alt="Ameya Mhatre Logo"
-            className="h-12 w-auto"
+            className="h-12 w-auto transition-opacity duration-300"
           />
         </Link>
 
