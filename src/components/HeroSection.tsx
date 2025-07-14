@@ -26,7 +26,7 @@ const HeroSection = () => {
         {/* Profile Photo */}
         <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-6 border-4 border-futures-4 shadow-lg">
           <img
-            src="https://via.placeholder.com/192" // Replace with your actual photo URL
+            src="./pfp.jpg" // Replace with your actual photo URL
             alt="Your Professional Photo"
             className="w-full h-full object-cover"
           />

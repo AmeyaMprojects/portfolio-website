@@ -58,7 +58,7 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Label htmlFor="name" className="text-foreground">Name</Label>
-                  <Input id="name" type="text" placeholder="Ameya Mhatre" required className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" />
+                  <Input id="name" type="text" placeholder="Your Name" required className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" />
                 </div>
                 <div>
                   <Label htmlFor="email" className="text-foreground">Email</Label>
