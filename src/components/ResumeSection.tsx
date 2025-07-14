@@ -15,7 +15,7 @@ interface TimelineItemProps {
 
 const timelineData: TimelineItemProps[] = [
   {
-    title: "Senior Software Engineer",
+    title: "SCurrent project placeholder",
     subtitle: "Tech Solutions Inc.",
     date: "Jan 2022 - Present",
     description: [
@@ -25,13 +25,13 @@ const timelineData: TimelineItemProps[] = [
     ],
   },
   {
-    title: "Software Developer",
-    subtitle: "Innovate Systems",
-    date: "Aug 2019 - Dec 2021",
+    title: "Cybersecurity Intern",
+    subtitle: "Mastek Ltd.",
+    date: "June -August 2025",
     description: [
-      "Developed and maintained core features for a SaaS product using React and Node.js, contributing to a 15% increase in user engagement.",
-      "Optimized database queries and API endpoints, resulting in a 30% reduction in response times.",
-      "Collaborated with product managers and UX designers to translate requirements into technical specifications.",
+      "Created and managed a comprehensive audit sheet for multiple cybersecurity frameworks, including NIST Cybersecurity Framework (CSF), NIST Artificial Intelligence (AI) Risk Management Framework (RMF), and ISO 27001/27002 standards.",
+      "Conducted detailed mapping of audit questions across NIST and ISO frameworks to ensure alignment with industry best practices and organizational compliance.",
+      "Developed and actively enhancing an automated auditing solution as part of Governance, Risk, and Compliance (GRC) work, streamlining audit processes across NIST CSF, NIST AI RMF, and ISO frameworks.",
     ],
   },
   {
@@ -109,7 +109,7 @@ const ResumeSection = () => {
           }}
           viewport={{ once: true, margin: "-50px" }}
         >
-          My Resume
+          My Journey
         </motion.h2>
 
         <div className="relative before:absolute before:left-4 md:before:left-1/2 before:top-0 before:h-full before:w-0.5 before:bg-futures-4/50 before:rounded-full">
@@ -133,7 +133,7 @@ const ResumeSection = () => {
               }}
             >
               <motion.div 
-                className="md:w-1/2 md:pr-8 md:text-right relative"
+                className="md:w-1/2 md:pr-8 relative"
                 initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }} // Reduced movement
                 whileInView={{ 
                   opacity: 1, 
@@ -189,7 +189,7 @@ const ResumeSection = () => {
                     </CardHeader>
                     <CardContent>
                       <motion.ul 
-                        className="list-disc list-inside space-y-1 text-foreground leading-relaxed"
+                        className="list-disc list-inside space-y-1 text-foreground leading-relaxed text-left"
                         initial={{ opacity: 0 }}
                         whileInView={{ 
                           opacity: 1,
