@@ -2,6 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance Optimizations */
+.will-change-auto {
+  will-change: auto;
+}
+
+/* Force hardware acceleration for animations */
+.animate-pulse,
+.animate-ping,
+.animate-bounce {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize motion animations */
+[data-motion] {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-ping,
+  .animate-bounce {
+    animation: none;
+  }
+  
+  [data-motion] {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
