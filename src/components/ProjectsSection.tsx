@@ -69,14 +69,15 @@ const projects: ProjectProps[] = [
     githubLink: "https://github.com/yourprofile/security-dashboard",
   },
   {
-    title: "Personal Blog & CMS",
-    description: "A responsive personal blog with a custom content management system (CMS) for easy post creation and management. Features markdown support and SEO optimization.",
-    technologies: ["Next.js", "TypeScript", "GraphQL", "Strapi CMS", "PostgreSQL", "Tailwind CSS"],
-    imageUrl: "https://via.placeholder.com/400x250/044D8C/FFFFFF?text=Personal+Blog",
-    githubLink: "https://github.com/yourprofile/personal-blog",
-    liveDemoLink: "https://blog.example.com",
-  },
-  
+    title: "Minimalist Todo App",
+    description: "A simple and clean todo list app designed to help you stay organized with a minimal interface. Features task creation, editing, and deletion with local storage support for persistent data.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "LocalStorage"],
+    imageUrl: "/minimalist.png",
+    githubLink: "https://github.com/AmeyaMprojects/to_Do",
+    liveDemoLink: "https://zaptaskhub.vercel.app/"
+  }
+
+
 ];
 
 const ProjectsSection = () => {
