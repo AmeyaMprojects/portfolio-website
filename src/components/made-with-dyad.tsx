@@ -16,7 +16,7 @@ export const MadeWithDyad = () => {
     
     const currentTheme = resolvedTheme || theme;
     return currentTheme === "dark" 
-      ? "/placeholder.svg" // Dark mode logo
+      ? "/logo-removebg-preview.png" // Dark mode logo (you'll need to add this)
       : "/logo-dark.png"; // Light mode logo (you'll need to add this)
   };
 
