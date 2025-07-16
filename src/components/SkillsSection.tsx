@@ -23,7 +23,10 @@ import {
   HardDrive,
   Network,
   Monitor,
-  Settings
+  Settings,
+  Users,
+  Lightbulb,
+  Target
 } from "lucide-react";
 
 const skills = {
@@ -60,7 +63,7 @@ const skills = {
     { name: "SIEM", icon: Monitor },
     // { name: "Firewalls", icon: Shield },
   ],
-  "DevOps & Tools": [
+  "Tools & Skills": [
     { name: "Git", icon: GitBranch },
     // { name: "GitHub", icon: GitBranch },
     { name: "Docker", icon: HardDrive },
@@ -70,6 +73,9 @@ const skills = {
     // { name: "Jira", icon: Wrench },
     { name: "VS Code", icon: Terminal },
     // { name: "Postman", icon: Network },
+    { name: "Leadership & Team Management", icon: Users },
+    { name: "Problem Solving", icon: Lightbulb },
+    { name: "Strategic Thinking", icon: Target },
   ],
 };
 
