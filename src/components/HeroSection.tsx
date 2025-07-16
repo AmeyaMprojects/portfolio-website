@@ -81,15 +81,7 @@ const HeroSection = () => {
           >
             <Github size={28} />
           </a>
-          <a
-            href="https://twitter.com/yourprofile"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-futures-3 hover:text-futures-1 transition-colors"
-            aria-label="Twitter Profile"
-          >
-            <Twitter size={28} />
-          </a>
+          
           <a
             href="mailto:ameyam.projects@gmail.com"
             target="_blank"
