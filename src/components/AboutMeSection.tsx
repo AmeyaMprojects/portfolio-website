@@ -89,7 +89,7 @@ const AboutMeSection = () => {
             </CardHeader>
             <CardContent className="text-foreground leading-relaxed">
               <p className="mb-4">
-                I'm a software engineer with a passion for crafting robust and scalable fullstack web applications.   I thrive in environments where I can continuously learn and apply new technologies to build impactful products and solutions.
+                I'm an aspriing software engineer with a passion for crafting robust and scalable fullstack web applications.   I thrive in environments where I can continuously learn and apply new technologies to build impactful products and solutions.
               </p>
               <p>
                 My expertise spans across various programming languages and frameworks, allowing me to tackle challenges from diverse angles. I am particularly excited about the intersection of web development and cybersecurity, always striving to build secure and resilient systems.
