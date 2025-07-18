@@ -53,20 +53,21 @@ const ProjectCard: React.FC<ProjectProps> = ({
 };
 
 const projects: ProjectProps[] = [
-  {
-    title: "E-commerce Platform",
-    description: "A full-stack e-commerce application with user authentication, product listings, shopping cart functionality, and payment integration. Built with a focus on scalability and user experience.",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Tailwind CSS"],
-    imageUrl: "https://via.placeholder.com/400x250/3D9DD9/FFFFFF?text=E-commerce+App",
-    githubLink: "https://github.com/yourprofile/ecommerce-platform",
-    liveDemoLink: "https://ecommerce-demo.example.com",
+{
+    title: "Auditing Dashboard",
+    description: "A React-based auditing prototype with TypeScript implementation featuring modular components for audit sections, evidence inputs, and status cards. Includes dynamic rendering of audit questions from structured schema, evidence upload functionality, and multi-step routing logic with responsive cross-device compatibility.",
+    technologies: ["React", "TypeScript", "CSS Grid", "CSS Flexbox", "Component Architecture", "Responsive Design"],
+    imageUrl: "/audit.png",
+    githubLink: "https://github.com/AmeyaMprojects/auditing-dashboard",
+    liveDemoLink: "https://auditing-app.vercel.app/"
   },
   {
-    title: "Cybersecurity Dashboard",
-    description: "An interactive dashboard for visualizing network traffic, security alerts, and vulnerability scan results. Designed to provide a clear overview of an organization's security posture.",
-    technologies: ["Python", "Flask", "React", "D3.js", "PostgreSQL", "Splunk API"],
-    imageUrl: "https://via.placeholder.com/400x250/223542/FFFFFF?text=Security+Dashboard",
-    githubLink: "https://github.com/yourprofile/security-dashboard",
+    title: "Crypto Dashboard",
+    description: "A real-time cryptocurrency tracking dashboard built with React and TypeScript. Features live price monitoring, portfolio tracking, market trends visualization, and price alerts. Integrates with multiple crypto APIs to provide comprehensive market data and trading insights with responsive charts and analytics.",
+    technologies: ["React", "TypeScript", "Chart.js", "Crypto APIs", "Tailwind CSS", "Real-time Data"],
+    imageUrl: "/cypto.jpg",
+    githubLink: "https://github.com/AmeyaMprojects/crypto-dashboard",
+    liveDemoLink: "https://crypto-dashboard-woad-delta.vercel.app/"
   },
   {
     title: "Minimalist Todo App",

@@ -14,16 +14,7 @@ interface TimelineItemProps {
 }
 
 const timelineData: TimelineItemProps[] = [
-  {
-    title: "SCurrent project placeholder",
-    subtitle: "Tech Solutions Inc.",
-    date: "Jan 2022 - Present",
-    description: [
-      "Led a team of 5 engineers in developing a scalable microservices architecture for a new customer analytics platform, improving data processing efficiency by 40%.",
-      "Implemented robust security protocols, reducing potential vulnerabilities by 25% through regular code audits and penetration testing.",
-      "Mentored junior developers, fostering a collaborative environment and improving team code quality by establishing best practices.",
-    ],
-  },
+
   {
     title: "Cybersecurity Intern",
     subtitle: "Mastek Ltd.",
