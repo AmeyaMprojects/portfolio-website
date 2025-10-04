@@ -14,11 +14,21 @@ interface TimelineItemProps {
 }
 
 const timelineData: TimelineItemProps[] = [
-
+  {
+    title: "Chair - IEEE Computational Intelligence Society (CIS)",
+    subtitle: "MAHE Bengaluru Chapter",
+    date: "August 2025 - June 2026",
+    description: [
+      "Leading the IEEE CIS student chapter in strategic planning and execution of technical workshops, guest lectures, and innovative projects focused on computational intelligence, machine learning, and AI technologies.",
+      "Managing and mentoring a diverse committee of students passionate about emerging technologies, fostering collaborative learning environments and professional development opportunities.",
+      "Developing partnerships with industry leaders and academic institutions to provide hands-on experience through hackathons, research collaborations, and internship opportunities.",
+      "Building a vibrant community of 50+ students through regular technical sessions, paper presentations, and collaborative projects that bridge theoretical knowledge with practical implementation.",
+    ],
+  },
   {
     title: "Cybersecurity Intern",
     subtitle: "Mastek Ltd.",
-    date: "June -August 2025",
+    date: "June - August 2025",
     description: [
       "Created and managed a comprehensive audit sheet for multiple cybersecurity frameworks, including NIST Cybersecurity Framework (CSF), NIST Artificial Intelligence (AI) Risk Management Framework (RMF), and ISO 27001/27002 standards.",
       "Conducted detailed mapping of audit questions across NIST and ISO frameworks to ensure alignment with industry best practices and organizational compliance.",
