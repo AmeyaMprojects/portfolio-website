@@ -53,20 +53,20 @@ const PublicationCard: React.FC<PublicationProps> = ({
 
 const publications: PublicationProps[] = [
   {
-    title: "Cybersecurity Best Practices for Modern Web Applications",
-    description: "An in-depth analysis of contemporary cybersecurity threats and defensive strategies for web applications, covering OWASP Top 10, secure coding practices, and implementation of security frameworks.",
+    title: "Computational Intelligence in Sports: The Quest for the Perfect Call",
+    description: "This article explores how CI revolutionizes sports officiating through pinpoint trajectory analysis (Hawk-Eye), automated event detection for VAR, and infallible Goal-Line Technology using sensor fusion. Features advanced techniques including Computer Vision, 3D Reconstruction, and Pattern Recognition transforming sports accuracy.",
     platform: "LinkedIn",
-    publishDate: "Sep 2024",
-    linkedinUrl: "https://www.linkedin.com/pulse/your-article-url",
-    category: "Cybersecurity"
+    publishDate: "Oct 2024",
+    linkedinUrl: "https://www.linkedin.com/pulse/ideal-call-behind-ai-revolution-sportsofficiating-ieee-cis-mitblr-pfbre",
+    category: "Computational Intelligence"
   },
   {
-    title: "The Future of React Development: TypeScript Integration",
-    description: "Exploring the benefits of TypeScript in React applications, discussing type safety, developer experience improvements, and best practices for migrating existing projects.",
+    title: "Computational Intelligence Through Anime and Cinema: When Fiction Meets Frontier Science",
+    description: "Explores how CI systems that learn, adapt, and evolve are reflected in anime and Hollywood storytelling. Examines Neural Networks through Iron Man's J.A.R.V.I.S., Reinforcement Learning via  and Edge of Tomorrow, and ethical AI frontiers in Ghost in the Shell . Reveals how fiction serves as cultural laboratories for understanding real-world AI challenges.",
     platform: "LinkedIn",
-    publishDate: "Aug 2024",
-    linkedinUrl: "https://www.linkedin.com/pulse/your-article-url",
-    category: "Development"
+    publishDate: "Sep 2024",
+    linkedinUrl: "https://www.linkedin.com/pulse/framed-realities-exploring-ci-anime-hollywood-ieee-cis-mitblr-dhlje/?trackingId=8h%2B3JYOoSECz6fzFD9VTtg%3D%3D",
+    category: "Computational Intelligence"
   },
   {
     title: "Building Scalable Audit Systems: A Technical Perspective",

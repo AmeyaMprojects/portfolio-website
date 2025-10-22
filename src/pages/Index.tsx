@@ -14,11 +14,13 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <AboutMeSection />
-        <SkillsSection />
+        <ResumeSection /> 
         <ProjectsSection />
         <PublicationsSection />
-        <ResumeSection />
+        
+        <SkillsSection />
+       
+        <AboutMeSection />
         <ContactSection />
       </main>
       <MadeWithDyad />
