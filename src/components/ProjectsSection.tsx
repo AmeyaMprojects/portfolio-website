@@ -4,6 +4,9 @@ import React from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink } from "lucide-react";
+import Waves from './Waves';
+
+
 
 interface ProjectProps {
   title: string;
@@ -23,7 +26,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
   liveDemoLink,
 }) => {
   return (
-    <Card className="bg-card shadow-lg border-futures-5/30 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <Card className="bg-card/80 backdrop-blur-sm shadow-lg border-futures-5/30 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <img src={imageUrl} alt={title} className="w-full h-48 object-cover rounded-t-lg" />
       <CardHeader>
         <CardTitle className="text-2xl text-futures-2">{title}</CardTitle>
@@ -50,9 +53,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
       </CardFooter>
     </Card>
   );
-};
-
-const projects: ProjectProps[] = [
+};const projects: ProjectProps[] = [
 {
     title: "Auditing Dashboard",
     description: "A React-based auditing prototype with TypeScript implementation featuring modular components for audit sections, evidence inputs, and status cards. Includes dynamic rendering of audit questions from structured schema, evidence upload functionality, and multi-step routing logic with responsive cross-device compatibility.",
@@ -83,8 +84,26 @@ const projects: ProjectProps[] = [
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-16 px-4 bg-background">
-      <div className="container mx-auto max-w-6xl">
+    <section id="projects" className="py-16 px-4 bg-background relative overflow-hidden">
+      {/* Waves Background for Entire Section */}
+      <div className="absolute inset-0 z-0">
+        <Waves
+          lineColor="#7B7481"
+          backgroundColor="rgba(123, 116, 129, 0.05)"
+          waveSpeedX={0.02}
+          waveSpeedY={0.01}
+          waveAmpX={40}
+          waveAmpY={20}
+          friction={0.9}
+          tension={0.01}
+          maxCursorMove={120}
+          xGap={12}
+          yGap={36}
+        />
+      </div>
+      
+      {/* Content with higher z-index */}
+      <div className="relative z-10 container mx-auto max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-futures-1 mb-12">
           My Projects
         </h2>
