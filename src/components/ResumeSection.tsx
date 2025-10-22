@@ -12,6 +12,9 @@ interface TimelineItemProps {
   date: string;
   description: string[];
 }
+import Silk from './Silk';
+
+
 
 const timelineData: TimelineItemProps[] = [
   {
@@ -49,51 +52,14 @@ const timelineData: TimelineItemProps[] = [
 const ResumeSection = () => {
   return (
     <section id="resume" className="py-16 px-4 bg-futures-5/10 relative overflow-hidden">
-      {/* Optimized Galaxy Background Effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Static Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-indigo-900/20"></div>
-        
-        {/* Reduced Animated Stars - only 20 instead of 50 */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white rounded-full opacity-60 animate-pulse will-change-auto"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 2}s`, // Slower animation
-              }}
-            ></div>
-          ))}
-        </div>
-        
-        {/* Reduced Larger Stars - only 8 instead of 20 */}
-        <div className="absolute inset-0">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-blue-300/60 rounded-full animate-ping will-change-auto"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 6}s`, // Longer delays
-                animationDuration: `${4 + Math.random() * 4}s`, // Slower animation
-              }}
-            ></div>
-          ))}
-        </div>
-        
-        {/* Static Nebula Effect - removed animation */}
-        <div 
-          className="absolute inset-0 opacity-60" 
-          style={{ 
-            background: 'radial-gradient(circle, rgba(147, 51, 234, 0.1) 0%, transparent 50%, rgba(37, 99, 235, 0.1) 100%)',
-          }}
-        ></div>
-      </div>
+      {/* Silk Background Effect */}
+      <Silk
+        speed={5}
+        scale={1}
+        color="#1A2230"
+        noiseIntensity={1.5}
+        rotation={0}
+      />
       
       {/* Content with higher z-index */}
       <div className="relative z-10 container mx-auto max-w-4xl">
