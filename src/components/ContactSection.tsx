@@ -7,7 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { showSuccess, showError } from "@/utils/toast"; // Assuming you have these toast utilities
+import { showSuccess, showError } from "@/utils/toast"; 
+import { MadeWithDyad } from "@/components/made-with-dyad";
+
+import Beams from './Beams';
+
+
 
 const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -20,14 +25,30 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-16 px-4 bg-background">
-      <div className="container mx-auto max-w-4xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-futures-1 mb-12">
+    <section id="contact" className="py-16 px-4 bg-background relative overflow-hidden">
+      {/* Beams Background */}
+      <div className="absolute inset-0 z-0">
+        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+          <Beams
+            beamWidth={2}
+            beamHeight={15}
+            beamNumber={12}
+            lightColor="#ffffff"
+            speed={2}
+            noiseIntensity={1.75}
+            scale={0.2}
+            rotation={30}
+          />
+        </div>
+      </div>
+      
+      <div className="container mx-auto max-w-4xl relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center  mb-12  bg-gradient-to-r from-futures-1 via-futures-2 to-futures-3 bg-clip-text text-transparent">
           Get in Touch
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="bg-card shadow-lg border-futures-5/30 transition-all duration-300 hover:shadow-xl">
+          <Card className="bg-card/90 backdrop-blur-sm shadow-lg border-futures-5/30 transition-all duration-300 hover:shadow-xl">
             <CardHeader>
               <CardTitle className="text-2xl text-futures-2">Contact Information</CardTitle>
             </CardHeader>
@@ -50,7 +71,7 @@ const ContactSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-card shadow-lg border-futures-5/30 transition-all duration-300 hover:shadow-xl">
+          <Card className="bg-card/90 backdrop-blur-sm shadow-lg border-futures-5/30 transition-all duration-300 hover:shadow-xl">
             <CardHeader>
               <CardTitle className="text-2xl text-futures-2">Send a Message</CardTitle>
             </CardHeader>
@@ -75,7 +96,9 @@ const ContactSection = () => {
             </CardContent>
           </Card>
         </div>
-      </div>
+        <MadeWithDyad />
+      </div> 
+      
     </section>
   );
 };

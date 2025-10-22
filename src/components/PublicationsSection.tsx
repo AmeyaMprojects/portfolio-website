@@ -4,6 +4,9 @@ import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Calendar, BookOpen } from "lucide-react";
+import DotGrid from './DotGrid';
+
+
 
 interface PublicationProps {
   title: string;
@@ -23,6 +26,7 @@ const PublicationCard: React.FC<PublicationProps> = ({
   category,
 }) => {
   return (
+    <div>
     <Card className="bg-card shadow-lg border-futures-5/30 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <CardHeader>
         <div className="flex items-center justify-between mb-2">
@@ -48,6 +52,7 @@ const PublicationCard: React.FC<PublicationProps> = ({
         </Button>
       </CardContent>
     </Card>
+    </div>
   );
 };
 
@@ -80,9 +85,26 @@ const publications: PublicationProps[] = [
 
 const PublicationsSection = () => {
   return (
-    <section id="publications" className="py-16 px-4 bg-futures-5/5 relative">
+    <section id="publications" className="py-16 px-4 bg-futures-5/5 relative overflow-hidden">
+      {/* DotGrid Background */}
+      <div className="absolute inset-0 z-0">
+        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+          <DotGrid
+            dotSize={5}
+            gap={15}
+            baseColor="#111b38"
+            activeColor="#5227FF"
+            proximity={100}
+            shockRadius={250}
+            shockStrength={3}
+            resistance={750}
+            returnDuration={1.5}
+          />
+        </div>
+      </div>
+      
       {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-futures-1/5 to-futures-3/5 opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-futures-1/5 to-futures-3/5 opacity-30 z-1"></div>
       
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-12">

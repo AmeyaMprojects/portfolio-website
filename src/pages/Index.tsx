@@ -20,10 +20,10 @@ const Index = () => {
         
         <SkillsSection />
        
-        <AboutMeSection />
+        {/* <AboutMeSection /> */}
         <ContactSection />
       </main>
-      <MadeWithDyad />
+     
     </div>
   );
 };
