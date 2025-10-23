@@ -1,27 +1,49 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
 import { showSuccess, showError } from "@/utils/toast"; 
 import { MadeWithDyad } from "@/components/made-with-dyad";
+import emailjs from '@emailjs/browser';
 
 import Beams from './Beams';
 
 
 
 const ContactSection = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const form = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, you would send this data to a backend service
-    // For now, we'll just show a success toast.
-    showSuccess("Thank you for your message! I'll get back to you soon.");
-    // You might want to clear the form here
-    (e.target as HTMLFormElement).reset();
+    
+    if (!form.current) return;
+    
+    setIsLoading(true);
+    
+    try {
+      // Replace these with your actual EmailJS credentials
+      const result = await emailjs.sendForm(
+        'service_1y2denx',     // Replace with your EmailJS service ID
+        'template_d936gxc',    // Replace with your EmailJS template ID
+        form.current,
+        'K_husrdizwkfQ_Dc5'      // Replace with your EmailJS public key
+      );
+      
+      console.log('Email sent successfully:', result.text);
+      showSuccess("Thank you for your message! I'll get back to you soon.");
+      form.current.reset();
+    } catch (error) {
+      console.error('Error sending email:', error);
+      showError("Sorry, there was an error sending your message. Please try again or contact me directly via email.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -76,21 +98,56 @@ const ContactSection = () => {
               <CardTitle className="text-2xl text-futures-2">Send a Message</CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Label htmlFor="name" className="text-foreground">Name</Label>
-                  <Input id="name" type="text" placeholder="Your Name" required className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" />
+                  <Input 
+                    id="name" 
+                    name="name"
+                    type="text" 
+                    placeholder="Your Name" 
+                    required 
+                    className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" 
+                    disabled={isLoading}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="email" className="text-foreground">Email</Label>
-                  <Input id="email" type="email" placeholder="your@email.com" required className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" />
+                  <Input 
+                    id="email" 
+                    name="email"
+                    type="email" 
+                    placeholder="your@email.com" 
+                    required 
+                    className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" 
+                    disabled={isLoading}
+                  />
                 </div>
                 <div>
                   <Label htmlFor="message" className="text-foreground">Message</Label>
-                  <Textarea id="message" placeholder="Your message..." rows={5} required className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" />
+                  <Textarea 
+                    id="message" 
+                    name="message"
+                    placeholder="Your message..." 
+                    rows={5} 
+                    required 
+                    className="mt-1 bg-input border-futures-5/50 focus:border-futures-4" 
+                    disabled={isLoading}
+                  />
                 </div>
-                <Button type="submit" className="w-full bg-futures-1 hover:bg-futures-2 text-white">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  className="w-full bg-futures-1 hover:bg-futures-2 text-white"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </Button>
               </form>
             </CardContent>
