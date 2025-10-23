@@ -40,8 +40,9 @@ const HeroSection = () => {
 
         {/* Description */}
         <p className="text-lg md:text-xl text-foreground max-w-2xl mb-8">
-          Building innovative web applications and solving complex problems with code.
-          I specialize in full-stack development and have a keen interest in cybersecurity.
+          Passionate full stack developer with a knack for problem-solving and
+          innovation. 2nd year undergraduate at<span className="text-futures-4"> 
+            &nbsp;MIT-BLR</span>.
         </p>
 
         {/* Buttons */}

@@ -71,8 +71,8 @@ const ProjectCard: React.FC<ProjectProps> = ({
     liveDemoLink: "https://crypto-dashboard-woad-delta.vercel.app/"
   },
   {
-    title: "Minimalist Todo App",
-    description: "A simple and clean todo list app designed to help you stay organized with a minimal interface. Features task creation, editing, and deletion with local storage support for persistent data.",
+    title: "Minimalist To-do App",
+    description: "A simple and clean to-do list app designed to help you stay organized with a minimal interface. Features task creation, editing, and deletion with local storage support for persistent data.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "LocalStorage"],
     imageUrl: "/minimalist.png",
     githubLink: "https://github.com/AmeyaMprojects/to_Do",
