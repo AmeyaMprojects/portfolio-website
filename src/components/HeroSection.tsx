@@ -3,6 +3,12 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import PrismaticBurst from './PrismaticBurst';
+
+
+
+
+
 
 const HeroSection = () => {
   const handleScrollTo = (id: string) => {
@@ -13,16 +19,29 @@ const HeroSection = () => {
   };
 
   return (
+
+
     <section
       id="home"
-      className="min-h-[calc(100vh-56px)] flex flex-col items-center justify-center text-center py-16 px-4 bg-gradient-to-b from-background to-futures-5/10 relative overflow-hidden"
+      className="min-h-[calc(100vh-56px)] flex flex-col items-center justify-center text-center py-16 px-4 bg-gradient-to-b from-background to-futures-5/10 relative"
     >
-      {/* Background animation effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="jumbo absolute -inset-[10px] opacity-50"></div>
+      {/* PrismaticBurst Background Effect */}
+      <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
+        <PrismaticBurst
+          animationType="rotate3d"
+          intensity={2}
+          speed={0.5}
+          distort={0}
+          paused={false}
+          offset={{ x: 0, y: 0 }}
+          hoverDampness={0.25}
+          rayCount={15}
+          mixBlendMode="lighten"
+          colors={['#4B71EF', '#000BD0', '#8442FF']}
+        />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center">
+      <div className="flex flex-col items-center relative z-10">
         {/* Profile Photo */}
         <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-6 border-4 border-futures-4 shadow-lg">
           <img
@@ -40,9 +59,7 @@ const HeroSection = () => {
 
         {/* Description */}
         <p className="text-lg md:text-xl text-foreground max-w-2xl mb-8">
-          Passionate full stack developer with a knack for problem-solving and
-          innovation. 2nd year undergraduate at<span className="text-futures-4"> 
-            &nbsp;MIT-BLR</span>.
+          2nd year undergrad at MIT-BLR focused on building innovative web applications. I specialize in full-stack development and have a keen interest in cybersecurity.
         </p>
 
         {/* Buttons */}
@@ -82,7 +99,7 @@ const HeroSection = () => {
           >
             <Github size={28} />
           </a>
-          
+
           <a
             href="mailto:ameyam.projects@gmail.com"
             target="_blank"
