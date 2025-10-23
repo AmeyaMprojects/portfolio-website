@@ -61,7 +61,7 @@ const publications: PublicationProps[] = [
     title: "Computational Intelligence in Sports: The Quest for the Perfect Call",
     description: "This article explores how CI revolutionizes sports officiating through pinpoint trajectory analysis (Hawk-Eye), automated event detection for VAR, and infallible Goal-Line Technology using sensor fusion. Features advanced techniques including Computer Vision, 3D Reconstruction, and Pattern Recognition transforming sports accuracy.",
     platform: "LinkedIn",
-    publishDate: "Oct 5024",
+    publishDate: "Oct 2025",
     linkedinUrl: "https://www.linkedin.com/pulse/ideal-call-behind-ai-revolution-sportsofficiating-ieee-cis-mitblr-pfbre",
     category: "Computational Intelligence"
   },
@@ -69,7 +69,7 @@ const publications: PublicationProps[] = [
     title: "Computational Intelligence Through Anime and Cinema: When Fiction Meets Frontier Science",
     description: "Explores how CI systems that learn, adapt, and evolve are reflected in anime and Hollywood storytelling. Examines Neural Networks through Iron Man's J.A.R.V.I.S., Reinforcement Learning via  and Edge of Tomorrow, and ethical AI frontiers in Ghost in the Shell . Reveals how fiction serves as cultural laboratories for understanding real-world AI challenges.",
     platform: "LinkedIn",
-    publishDate: "Sep 5024",
+    publishDate: "Sep 2025",
     linkedinUrl: "https://www.linkedin.com/pulse/framed-realities-exploring-ci-anime-hollywood-ieee-cis-mitblr-dhlje/?trackingId=8h%2B3JYOoSECz6fzFD9VTtg%3D%3D",
     category: "Computational Intelligence"
   },
