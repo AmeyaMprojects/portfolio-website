@@ -215,7 +215,7 @@ const ResumeSection = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Button asChild className="bg-futures-1 hover:bg-futures-2 text-white px-6 py-3 text-lg rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
-              <a href="/your-resume.pdf" download="Your_Name_Resume.pdf"> {/* Replace with your actual resume PDF path */}
+              <a href="/AmeyaMhatreResume.pdf" download="Ameya_Mhatre_Resume.pdf">
                 <Download className="mr-2 h-5 w-5" /> Download Resume
               </a>
             </Button>
