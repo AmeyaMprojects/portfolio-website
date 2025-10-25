@@ -3,14 +3,14 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Globe, 
-  Code, 
-  Database, 
-  Shield, 
-  GitBranch, 
-  Server, 
-  Palette, 
+import {
+  Globe,
+  Code,
+  Database,
+  Shield,
+  GitBranch,
+  Server,
+  Palette,
   Zap,
   FileCode,
   Layers,
@@ -28,6 +28,9 @@ import {
   Lightbulb,
   Target
 } from "lucide-react";
+import Dither from './Dither';
+
+
 
 const skills = {
   Frontend: [
@@ -81,8 +84,23 @@ const skills = {
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-16 px-4 bg-futures-5/10">
-      <div className="container mx-auto max-w-6xl">
+    <section id="skills" className="py-16 px-4 bg-futures-5/10 relative overflow-hidden">
+      {/* Dither Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <Dither
+          waveColor={[0.4, 0.5, 0.6]}
+          disableAnimation={false}
+          enableMouseInteraction={true}
+          mouseRadius={0}
+          colorNum={4}
+          waveAmplitude={0.28}
+          waveFrequency={1.6}
+          waveSpeed={0.01}
+          pixelSize={1}
+        />
+      </div>
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-futures-1 mb-12">
           Skills & Technologies
         </h2>
