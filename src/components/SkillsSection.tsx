@@ -1,136 +1,109 @@
 "use client";
 
 import React from "react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Globe,
+  BarChart3,
+  Braces,
+  Boxes,
+  Cloud,
   Code,
+  Container,
   Database,
-  Shield,
+  FileSearch,
   GitBranch,
-  Server,
-  Palette,
-  Zap,
-  FileCode,
-  Layers,
-  CloudCog,
-  Terminal,
-  Wrench,
-  Eye,
-  Lock,
-  AlertTriangle,
-  HardDrive,
+  LineChart,
   Network,
-  Monitor,
-  Settings,
-  Users,
-  Lightbulb,
-  Target
+  Server,
+  Shield,
+  ShieldAlert,
+  Sigma,
+  Table2,
+  Terminal,
+  TrendingUp,
+  type LucideIcon,
 } from "lucide-react";
-import Dither from './Dither';
+import { Reveal } from "@/components/apple/Reveal";
+import { Section } from "@/components/apple/Section";
+import { SurfaceCard } from "@/components/apple/SurfaceCard";
 
+type Skill = { name: string; icon: LucideIcon };
 
-
-const skills = {
-  Frontend: [
-    { name: "HTML5", icon: Globe },
-    { name: "CSS", icon: Palette },
-    { name: "JavaScript", icon: Code },
-    { name: "TypeScript", icon: FileCode },
-    { name: "React.js", icon: Layers },
-    { name: "Next.js", icon: Zap },
-    { name: "Tailwind CSS", icon: Palette },
-    // { name: "Shadcn/ui", icon: Monitor },
-    // { name: "Redux", icon: Settings },
-  ],
-  Backend: [
-    { name: "Node.js", icon: Server },
-    { name: "Express.js", icon: Server },
+/** Grouped the way the résumé groups them, so the two documents agree. */
+const skills: Record<string, Skill[]> = {
+  Languages: [
     { name: "Python", icon: Code },
-    { name: "Django", icon: Server },
-    { name: "Flask", icon: Server },
-    { name: "RESTful APIs", icon: Network },
-    // { name: "GraphQL", icon: Network },
-    // { name: "PostgreSQL", icon: Database },
-    // { name: "MongoDB", icon: Database },
+    { name: "JavaScript", icon: Braces },
     { name: "SQL", icon: Database },
+    { name: "C++", icon: Terminal },
   ],
-  Cybersecurity: [
-    { name: "Nist CSF 2.0", icon: Shield },
-    { name: "Web Application Security", icon: Lock },
-    { name: "Nist AI rmf", icon: Shield },
-    { name: "Vulnerability Assessment", icon: Eye },
-    { name: "Incident Response", icon: AlertTriangle },
-    // { name: "Cryptography", icon: Lock },
-    { name: "SIEM", icon: Monitor },
-    // { name: "Firewalls", icon: Shield },
+  "Quantitative & ML": [
+    { name: "Scikit-learn", icon: Sigma },
+    { name: "Pandas", icon: Table2 },
+    { name: "NumPy", icon: BarChart3 },
+    { name: "XGBoost", icon: TrendingUp },
+    { name: "Regression modelling", icon: LineChart },
+    { name: "Statistical analysis", icon: Sigma },
   ],
-  "Tools & Skills": [
+  "Frameworks & tools": [
+    { name: "React", icon: Boxes },
+    { name: "Node.js", icon: Server },
+    { name: "FastAPI", icon: Network },
+    { name: "AWS", icon: Cloud },
     { name: "Git", icon: GitBranch },
-    // { name: "GitHub", icon: GitBranch },
-    { name: "Docker", icon: HardDrive },
-    // { name: "AWS (EC2, S3, Lambda)", icon: CloudCog },
-    // { name: "Netlify", icon: CloudCog },
-    // { name: "Vercel", icon: CloudCog },
-    // { name: "Jira", icon: Wrench },
-    { name: "VS Code", icon: Terminal },
-    // { name: "Postman", icon: Network },
-    { name: "Leadership & Team Management", icon: Users },
-    { name: "Problem Solving", icon: Lightbulb },
-    { name: "Strategic Thinking", icon: Target },
+    { name: "LangChain / LangGraph", icon: Container },
+  ],
+  "Risk & compliance": [
+    { name: "NIST CSF", icon: Shield },
+    { name: "ISO 27001", icon: Shield },
+    { name: "Threat modelling", icon: ShieldAlert },
+    { name: "Security audits", icon: FileSearch },
   ],
 };
 
+/**
+ * Skills.
+ *
+ * Grouped, plain, and unranked. Proficiency bars are a fiction — nobody can
+ * defend "React, 87%" — so this states what's in the toolbox and stops there.
+ */
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-16 px-4 bg-futures-5/10 relative overflow-hidden">
-      {/* Dither Background */}
-      <div className="absolute inset-0 w-full h-full">
-        <Dither
-          waveColor={[0.4, 0.5, 0.6]}
-          disableAnimation={false}
-          enableMouseInteraction={true}
-          mouseRadius={0}
-          colorNum={4}
-          waveAmplitude={0.28}
-          waveFrequency={1.6}
-          waveSpeed={0.01}
-          pixelSize={1}
-        />
+    <Section
+      id="skills"
+      eyebrow="Skills"
+      title="What I work with"
+      description="The stack I reach for, and the frameworks I audit against."
+    >
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {Object.entries(skills).map(([category, skillList], index) => (
+          <Reveal key={category} delay={index * 0.05} className="h-full">
+            <SurfaceCard className="h-full p-6">
+              <h3 className="type-caption mb-4 text-subtle">{category}</h3>
+              <ul className="space-y-3">
+                {skillList.map(({ name, icon: Icon }) => (
+                  <li key={name} className="flex items-start gap-2.5">
+                    <Icon
+                      size={16}
+                      className="mt-0.5 shrink-0 text-blue"
+                      aria-hidden
+                    />
+                    <span className="text-[0.9375rem] leading-snug tracking-[-0.004em] text-foreground">
+                      {name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </SurfaceCard>
+          </Reveal>
+        ))}
       </div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-futures-1 mb-12">
-          Skills & Technologies
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {Object.entries(skills).map(([category, skillList]) => (
-            <Card key={category} className="bg-card shadow-lg border-futures-5/30 transition-all duration-300 hover:shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-xl text-futures-2">{category}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-2">
-                {skillList.map((skill) => {
-                  const IconComponent = skill.icon;
-                  return (
-                    <Badge
-                      key={skill.name}
-                      variant="secondary"
-                      className="bg-futures-4/20 text-futures-1 hover:bg-futures-4/30 transition-colors px-3 py-1 rounded-full text-sm flex items-center gap-1 w-full justify-start"
-                    >
-                      <IconComponent size={14} className="shrink-0" />
-                      {skill.name}
-                    </Badge>
-                  );
-                })}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
+      <Reveal delay={0.24} className="mt-8">
+        <p className="type-body text-muted-foreground">
+          Outside the stack: financial markets, sports analytics, and applied AI.
+        </p>
+      </Reveal>
+    </Section>
   );
 };
 

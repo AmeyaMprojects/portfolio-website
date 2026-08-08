@@ -1,116 +1,149 @@
 "use client";
 
 import React from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
-import PrismaticBurst from './PrismaticBurst';
+import { spring } from "@/lib/motion";
+import { RESUME_FILE, RESUME_DOWNLOAD_NAME } from "@/lib/resume";
 
+const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/ameya-mhatre-553003307/",
+    icon: Linkedin,
+  },
+  { label: "GitHub", href: "https://github.com/AmeyaMprojects", icon: Github },
+  { label: "Email", href: "mailto:ameyam.projects@gmail.com", icon: Mail },
+];
 
-
-
-
-
+/**
+ * Hero.
+ *
+ * One idea, stated large. The ambient field behind it is the only decorative
+ * element on the page and it is deliberately low-contrast and slow — it sets
+ * a mood without asking to be looked at. Everything else is type.
+ */
 const HeroSection = () => {
-  const handleScrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+
+  /* Gentle parallax: the backdrop lags the content slightly, which reads as
+     depth. Disabled entirely under reduced motion — a full-viewport moving
+     background is exactly what that setting exists to suppress. */
+  const fieldY = useTransform(scrollY, [0, 600], [0, 90]);
+  const fieldOpacity = useTransform(scrollY, [0, 500], [1, 0.25]);
+
+  const scrollTo = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
 
   return (
-
-
     <section
       id="home"
-      className="min-h-[calc(100vh-56px)] flex flex-col items-center justify-center text-center py-16 px-4 bg-gradient-to-b from-background to-futures-5/10 relative"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-6 pb-24 pt-32"
     >
-      {/* PrismaticBurst Background Effect */}
-      <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
-        <PrismaticBurst
-          animationType="rotate3d"
-          intensity={2}
-          speed={0.5}
-          distort={0}
-          paused={false}
-          offset={{ x: 0, y: 0 }}
-          hoverDampness={0.25}
-          rayCount={15}
-          mixBlendMode="lighten"
-          colors={['#4B71EF', '#000BD0', '#8442FF']}
-        />
-      </div>
+      <motion.div
+        className="pointer-events-none absolute inset-0"
+        style={reduceMotion ? undefined : { y: fieldY, opacity: fieldOpacity }}
+        aria-hidden
+      >
+        <div className="ambient-field" />
+      </motion.div>
 
-      <div className="flex flex-col items-center relative z-10">
-        {/* Profile Photo */}
-        <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden mb-6 border-4 border-futures-4 shadow-lg">
+      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={reduceMotion ? { duration: 0.25 } : spring.move}
+          className="mb-8"
+        >
           <img
-            src="./pfp.jpg" // Replace with your actual photo URL
-            alt="Your Professional Photo"
-            className="w-full h-full object-cover"
+            src="/pfp.jpg"
+            alt="Ameya Mhatre"
+            className="h-24 w-24 rounded-full object-cover shadow-md ring-1 ring-border md:h-28 md:w-28"
+            width={112}
+            height={112}
           />
-        </div>
+        </motion.div>
 
-        {/* Name and Title */}
-        <h1 className="text-4xl md:text-6xl font-extrabold text-futures-1 mb-4 leading-tight">
-          Hi, I'm <span className="text-futures-4">Ameya Mhatre</span>,
-          <br className="hidden sm:block" /> a passionate software engineer.
-        </h1>
+        <motion.h1
+          className="type-display text-foreground"
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={reduceMotion ? { duration: 0.25 } : { ...spring.reveal, delay: 0.06 }}
+        >
+          Ameya Mhatre
+        </motion.h1>
 
-        {/* Description */}
-        <p className="text-lg md:text-xl text-foreground max-w-2xl mb-8">
-          2nd year undergrad at MIT-BLR focused on building innovative web applications. I specialize in full-stack development and have a keen interest in cybersecurity.
-        </p>
+        <motion.p
+          className="type-lead mt-5 max-w-xl text-balance text-muted-foreground"
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={reduceMotion ? { duration: 0.25 } : { ...spring.reveal, delay: 0.12 }}
+        >
+          I build multi-agent LLM systems and quantitative tools, and I audit
+          them against NIST CSF and ISO 27001. Computer Science (Data Science) at
+          Manipal Institute of Technology, Bengaluru.
+        </motion.p>
 
-        {/* Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          <Button
-            className="bg-futures-1 hover:bg-futures-2 text-white px-6 py-3 text-lg rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
-            onClick={() => handleScrollTo("projects")}
-          >
-            View My Work
+        <motion.div
+          className="mt-10 flex flex-wrap items-center justify-center gap-3"
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={reduceMotion ? { duration: 0.25 } : { ...spring.reveal, delay: 0.18 }}
+        >
+          <Button size="lg" onClick={() => scrollTo("projects")}>
+            View work
           </Button>
-          <Button
-            variant="outline"
-            className="border-futures-1 text-futures-1 hover:bg-futures-1/10 px-6 py-3 text-lg rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
-            onClick={() => handleScrollTo("contact")}
-          >
-            Get in Touch
+          {/* Downloading a file is a different kind of act from navigating, so
+              it reads as a quieter, secondary control rather than a third
+              equally-weighted call to action. */}
+          <Button asChild size="lg" variant="secondary">
+            <a href={RESUME_FILE} download={RESUME_DOWNLOAD_NAME}>
+              <Download className="h-4 w-4" />
+              Résumé
+            </a>
           </Button>
-        </div>
+          <Button size="lg" variant="ghost" onClick={() => scrollTo("contact")}>
+            Get in touch
+          </Button>
+        </motion.div>
 
-        {/* Social Media Icons */}
-        <div className="flex space-x-6 justify-center mb-6">
-          <a
-            href="https://www.linkedin.com/in/ameya-mhatre-553003307/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-futures-3 hover:text-futures-1 transition-colors"
-            aria-label="LinkedIn Profile"
-          >
-            <Linkedin size={28} />
-          </a>
-          <a
-            href="https://github.com/AmeyaMprojects"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-futures-3 hover:text-futures-1 transition-colors"
-            aria-label="GitHub Profile"
-          >
-            <Github size={28} />
-          </a>
-
-          <a
-            href="mailto:ameyam.projects@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-futures-3 hover:text-futures-1 transition-colors"
-            aria-label="Email Address"
-          >
-            <Mail size={28} />
-          </a>
-        </div>
+        <motion.div
+          className="mt-10 flex items-center gap-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.28 }}
+        >
+          {socials.map(({ label, href, icon: Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="pressable-sm flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors duration-200 ease-apple hover:bg-secondary hover:text-foreground"
+            >
+              <Icon size={19} />
+            </a>
+          ))}
+        </motion.div>
       </div>
+
+      {/* Directional hint: the arrow points where the gesture goes next. */}
+      <motion.button
+        type="button"
+        onClick={() => scrollTo("resume")}
+        className="pressable-sm absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-[0.8125rem] font-medium text-subtle transition-colors duration-200 hover:text-foreground"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.5 }}
+      >
+        <ArrowDown className="h-3.5 w-3.5" />
+        Scroll
+      </motion.button>
     </section>
   );
 };

@@ -12,9 +12,9 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1120px",
       },
     },
     extend: {
@@ -24,6 +24,14 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        surface: "hsl(var(--surface))",
+        subtle: "hsl(var(--subtle-foreground))",
+        success: "hsl(var(--success))",
+        blue: {
+          DEFAULT: "hsl(var(--accent-blue))",
+          hover: "hsl(var(--accent-blue-hover))",
+          foreground: "hsl(var(--accent-blue-foreground))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -62,41 +70,36 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Custom portfolio colors
-        futures: {
-          '1': 'hsl(var(--futures-1))',
-          '2': 'hsl(var(--futures-2))',
-          '3': 'hsl(var(--futures-3))',
-          '4': 'hsl(var(--futures-4))',
-          '5': 'hsl(var(--futures-5))',
-        },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 2px)",
+        lg: "var(--radius)",
+        card: "var(--radius-card)",
+        panel: "var(--radius-panel)",
+      },
+      boxShadow: {
+        sm: "var(--shadow-sm)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-down": "accordion-down 0.2s cubic-bezier(0.32, 0.72, 0, 1)",
+        "accordion-up": "accordion-up 0.2s cubic-bezier(0.32, 0.72, 0, 1)",
+      },
+      transitionTimingFunction: {
+        // Apple's standard ease — a long, flat tail that settles rather than stops.
+        apple: "cubic-bezier(0.32, 0.72, 0, 1)",
       },
     },
   },

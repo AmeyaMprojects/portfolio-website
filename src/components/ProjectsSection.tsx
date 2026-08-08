@@ -1,127 +1,118 @@
 "use client";
 
 import React from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowUpRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink } from "lucide-react";
-import Waves from './Waves';
-
-
+import { Reveal } from "@/components/apple/Reveal";
+import { Section } from "@/components/apple/Section";
+import { SurfaceCard } from "@/components/apple/SurfaceCard";
 
 interface ProjectProps {
   title: string;
   description: string;
   technologies: string[];
-  imageUrl: string;
+  imageUrl?: string;
   githubLink: string;
   liveDemoLink?: string;
 }
 
-const ProjectCard: React.FC<ProjectProps> = ({
+const projects: ProjectProps[] = [
+  {
+    title: "Multi-Market Swing Trading Screener",
+    description:
+      "An automated multi-factor screening engine for cross-market equity analysis. Combines volatility-adjusted pricing, momentum indicators, and a probabilistic scoring matrix to surface mean-reversion and trend-continuation setups. Risk is ATR-anchored — volatility-based stops and multi-tiered profit targets instead of static percentages — with a minimum risk-to-reward threshold enforced before any candidate validates.",
+    technologies: ["Python", "FastAPI", "AWS", "Quantitative Modeling"],
+    imageUrl: "/swing-screener.png",
+    githubLink: "https://github.com/AmeyaMprojects/swing-screener",
+    liveDemoLink: "https://s501e59h91.execute-api.ap-south-1.amazonaws.com",
+  },
+  {
+    title: "Indian IPO Analyzer",
+    description:
+      "A multi-agent financial pipeline orchestrating five specialist agents — fundamentals, valuation, sentiment, risk profiling, synthesis — over live IPO data. Financial ratios (P/E, P/B, ROE, ROCE, debt/equity, CAGR) are computed deterministically and unit-tested, with LLM output confined to explanation, so every number in a report is independently verifiable and traceable to source.",
+    technologies: ["Python", "LangGraph", "Gemini", "Web Scraping"],
+    imageUrl: "/ipo-analyzer.png",
+    githubLink: "https://github.com/AmeyaMprojects/ipo_analyzer",
+    liveDemoLink: "https://ipoanalyzer.streamlit.app/",
+  },
+  {
+    title: "NBA Contract Analyzer",
+    description:
+      "An end-to-end pipeline modelling real 2023 CBA mechanics — rookie scale, max tiers, supermax, Bird rights, the luxury-tax apron — to value contracts against on-court performance rather than raw salary. A ridge-regression market-value model over player-season statistics quantifies surplus and deficit as a share of the salary cap across 101 players and 30 teams.",
+    technologies: ["Python", "Pandas", "Ridge Regression", "Web Scraping"],
+    imageUrl: "/nba-contract-analyzer.png",
+    githubLink: "https://github.com/AmeyaMprojects/Nba-Contract-Analyzer",
+    liveDemoLink: "https://ameyamprojects.github.io/Nba-Contract-Analyzer/",
+  },
+];
+
+const ProjectCard: React.FC<ProjectProps & { index: number }> = ({
   title,
   description,
   technologies,
   imageUrl,
   githubLink,
   liveDemoLink,
-}) => {
-  return (
-    <Card className="bg-card/80 backdrop-blur-sm shadow-lg border-futures-5/30 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-      <img src={imageUrl} alt={title} className="w-full h-48 object-cover rounded-t-lg" />
-      <CardHeader>
-        <CardTitle className="text-2xl text-futures-2">{title}</CardTitle>
-        <CardDescription className="text-foreground/80">
-          {technologies.join(", ")}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <p className="text-foreground leading-relaxed">{description}</p>
-      </CardContent>
-      <CardFooter className="flex flex-wrap gap-3 pt-4">
-        <Button asChild className="bg-futures-1 hover:bg-futures-2 text-white">
-          <a href={githubLink} target="_blank" rel="noopener noreferrer">
-            <Github className="mr-2 h-4 w-4" /> GitHub
-          </a>
-        </Button>
-        {liveDemoLink && (
-          <Button asChild variant="outline" className="border-futures-1 text-futures-1 hover:bg-futures-1/10">
-            <a href={liveDemoLink} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+  index,
+}) => (
+  <Reveal delay={index * 0.06} className="h-full">
+    <SurfaceCard interactive className="flex h-full flex-col overflow-hidden">
+      {/* Not every project has a screenshot worth showing. A card without one
+          closes up rather than reserving an empty grey box. */}
+      {imageUrl && (
+        <div className="aspect-[16/10] overflow-hidden border-b border-border/70 bg-secondary">
+          <img
+            src={imageUrl}
+            alt={`${title} interface`}
+            loading="lazy"
+            className="h-full w-full object-cover object-top"
+          />
+        </div>
+      )}
+
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="type-headline text-balance text-foreground">{title}</h3>
+        <p className="type-body mt-2.5 flex-1 text-muted-foreground">{description}</p>
+
+        {/* Technologies are metadata, not actions — they read as quiet text
+            rather than as a row of tappable-looking chips. */}
+        <p className="type-caption mt-5 text-subtle">{technologies.join(" · ")}</p>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {liveDemoLink && (
+            <Button asChild size="sm">
+              <a href={liveDemoLink} target="_blank" rel="noopener noreferrer">
+                Live demo
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </Button>
+          )}
+          <Button asChild size="sm" variant="secondary">
+            <a href={githubLink} target="_blank" rel="noopener noreferrer">
+              <Github className="h-4 w-4" />
+              Code
             </a>
           </Button>
-        )}
-      </CardFooter>
-    </Card>
-  );
-};const projects: ProjectProps[] = [
-{
-    title: "Auditing Dashboard",
-    description: "A React-based auditing prototype with TypeScript implementation featuring modular components for audit sections, evidence inputs, and status cards. Includes dynamic rendering of audit questions from structured schema, evidence upload functionality, and multi-step routing logic with responsive cross-device compatibility.",
-    technologies: ["React", "TypeScript", "CSS Grid", "CSS Flexbox", "Component Architecture", "Responsive Design"],
-    imageUrl: "/audit.png",
-    githubLink: "https://github.com/AmeyaMprojects/auditing-dashboard",
-    liveDemoLink: "https://auditing-app.vercel.app/"
-  },
-  {
-    title: "Crypto Dashboard",
-    description: "A real-time cryptocurrency tracking dashboard built with React and TypeScript. Features live price monitoring, portfolio tracking, market trends visualization, and price alerts. Integrates with multiple crypto APIs to provide comprehensive market data and trading insights with responsive charts and analytics.",
-    technologies: ["React", "TypeScript", "Chart.js", "Crypto APIs", "Tailwind CSS", "Real-time Data"],
-    imageUrl: "/cypto.jpg",
-    githubLink: "https://github.com/AmeyaMprojects/crypto-dashboard",
-    liveDemoLink: "https://crypto-dashboard-woad-delta.vercel.app/"
-  },
-  {
-    title: "Minimalist To-do App",
-    description: "A simple and clean to-do list app designed to help you stay organized with a minimal interface. Features task creation, editing, and deletion with local storage support for persistent data.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "LocalStorage"],
-    imageUrl: "/minimalist.png",
-    githubLink: "https://github.com/AmeyaMprojects/to_Do",
-    liveDemoLink: "https://zaptaskhub.vercel.app/"
-  }
-
-
-];
+        </div>
+      </div>
+    </SurfaceCard>
+  </Reveal>
+);
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-16 px-4 bg-background relative overflow-hidden">
-      {/* Waves Background for Entire Section */}
-      <div className="absolute inset-0 z-0">
-        <Waves
-          lineColor="#7B7481"
-          backgroundColor="rgba(123, 116, 129, 0.05)"
-          waveSpeedX={0.02}
-          waveSpeedY={0.01}
-          waveAmpX={40}
-          waveAmpY={20}
-          friction={0.9}
-          tension={0.01}
-          maxCursorMove={120}
-          xGap={12}
-          yGap={36}
-        />
+    <Section
+      id="projects"
+      eyebrow="Work"
+      title="Things I've built"
+      description="Agent pipelines and quantitative tools, built end to end — data ingestion through to the interface."
+    >
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.title} {...project} index={index} />
+        ))}
       </div>
-      
-      {/* Content with higher z-index */}
-      <div className="relative z-10 container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-futures-1 mb-12">
-          My Projects
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
-          ))}
-        </div>
-
-        {/* Optional: Project Filters can be added here later */}
-        {/* <div className="mt-12 text-center">
-          <Button variant="outline" className="border-futures-1 text-futures-1 hover:bg-futures-1/10">
-            View All Projects
-          </Button>
-        </div> */}
-      </div>
-    </section>
+    </Section>
   );
 };
 
