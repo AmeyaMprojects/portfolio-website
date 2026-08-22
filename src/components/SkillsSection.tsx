@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   BarChart3,
   Braces,
@@ -25,6 +26,7 @@ import {
 import { Reveal } from "@/components/apple/Reveal";
 import { Section } from "@/components/apple/Section";
 import { SurfaceCard } from "@/components/apple/SurfaceCard";
+import { spring, staggerContainer, revealVariants, viewportOnce } from "@/lib/motion";
 
 type Skill = { name: string; icon: LucideIcon };
 
@@ -67,6 +69,8 @@ const skills: Record<string, Skill[]> = {
  * defend "React, 87%" — so this states what's in the toolbox and stops there.
  */
 const SkillsSection = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Section
       id="skills"
@@ -77,28 +81,40 @@ const SkillsSection = () => {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {Object.entries(skills).map(([category, skillList], index) => (
           <Reveal key={category} delay={index * 0.05} className="h-full">
-            <SurfaceCard className="h-full p-6">
+            <SurfaceCard interactive className="h-full p-6">
               <h3 className="type-caption mb-4 text-subtle">{category}</h3>
-              <ul className="space-y-3">
+              <motion.ul
+                className="space-y-3"
+                variants={reduceMotion ? undefined : staggerContainer()}
+                initial={reduceMotion ? undefined : "hidden"}
+                whileInView={reduceMotion ? undefined : "visible"}
+                viewport={viewportOnce}
+              >
                 {skillList.map(({ name, icon: Icon }) => (
-                  <li key={name} className="flex items-start gap-2.5">
-                    <Icon
-                      size={16}
-                      className="mt-0.5 shrink-0 text-blue"
-                      aria-hidden
-                    />
+                  <motion.li
+                    key={name}
+                    variants={reduceMotion ? undefined : revealVariants}
+                    className="group flex items-start gap-2.5"
+                  >
+                    <motion.span
+                      className="mt-0.5 shrink-0"
+                      whileHover={!reduceMotion ? { y: -1, scale: 1.08 } : undefined}
+                      transition={spring.snap}
+                    >
+                      <Icon size={16} className="text-blue" aria-hidden />
+                    </motion.span>
                     <span className="text-[0.9375rem] leading-snug tracking-[-0.004em] text-foreground">
                       {name}
                     </span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </SurfaceCard>
           </Reveal>
         ))}
       </div>
 
-      <Reveal delay={0.24} className="mt-8">
+      <Reveal delay={0.2} className="mt-8">
         <p className="type-body text-muted-foreground">
           Outside the stack: financial markets, sports analytics, and applied AI.
         </p>
