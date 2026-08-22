@@ -24,7 +24,7 @@ const timelineData: TimelineItemProps[] = [
     title: "Chair, IEEE Computational Intelligence Society",
     subtitle: "MIT Bengaluru Student Chapter",
     location: "Bengaluru, India",
-    date: "Sep 2025 — Present",
+    date: "Aug 2025 — Aug 2026",
     description: [
       "Lead a 15+ member student technical chapter, setting strategy and overseeing execution of workshops and technical sessions on AI and cybersecurity for 200+ attendees.",
       "Own budget planning, cross-team coordination, and stakeholder communication for chapter initiatives.",
