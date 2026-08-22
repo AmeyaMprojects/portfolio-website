@@ -8,7 +8,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const FEED_URL = "https://ameyamhatre.substack.com/feed";
-const POST_LIMIT = 4;
+const POST_LIMIT = 3;
 const DESCRIPTION_LIMIT = 200;
 
 const OUTPUT_PATH = join(
