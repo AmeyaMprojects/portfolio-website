@@ -9,6 +9,11 @@ import path from "node:path";
  * PerplexityBot, and Googlebot's slower JS-rendering wave) get real content
  * on the first fetch instead of an empty <div id="root">. React hydrates
  * over this markup on the client exactly as it would over its own render.
+ *
+ * Best-effort: some CI build images (Vercel's included) don't ship the
+ * shared libraries Chromium needs to launch. If that happens here, we log
+ * why and leave dist/index.html as the plain client-rendered shell rather
+ * than failing the whole deploy over an enhancement step.
  */
 async function run() {
   const server = await preview({
@@ -16,26 +21,35 @@ async function run() {
   });
   const url = server.resolvedUrls.local[0];
 
-  const browser = await chromium.launch();
   try {
-    const page = await browser.newPage();
-    await page.goto(url, { waitUntil: "networkidle" });
-    await page.waitForTimeout(400);
+    const browser = await chromium.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+    try {
+      const page = await browser.newPage();
+      await page.goto(url, { waitUntil: "networkidle" });
+      await page.waitForTimeout(400);
 
-    const rootHtml = await page.$eval("#root", (el) => el.innerHTML);
+      const rootHtml = await page.$eval("#root", (el) => el.innerHTML);
 
-    const distIndex = path.join(process.cwd(), "dist", "index.html");
-    const html = readFileSync(distIndex, "utf-8");
-    const prerendered = html.replace(
-      '<div id="root"></div>',
-      `<div id="root">${rootHtml}</div>`,
-    );
-    writeFileSync(distIndex, prerendered);
-    console.log(
-      `Prerendered ${rootHtml.length.toLocaleString()} chars of static HTML into dist/index.html`,
-    );
+      const distIndex = path.join(process.cwd(), "dist", "index.html");
+      const html = readFileSync(distIndex, "utf-8");
+      const prerendered = html.replace(
+        '<div id="root"></div>',
+        `<div id="root">${rootHtml}</div>`,
+      );
+      writeFileSync(distIndex, prerendered);
+      console.log(
+        `Prerendered ${rootHtml.length.toLocaleString()} chars of static HTML into dist/index.html`,
+      );
+    } finally {
+      await browser.close();
+    }
+  } catch (err) {
+    console.warn("Prerender skipped — Chromium unavailable in this environment:");
+    console.warn(err?.message ?? err);
+    console.warn("Shipping the plain client-rendered build instead.");
   } finally {
-    await browser.close();
     await new Promise((resolve) => server.httpServer.close(resolve));
   }
 }
@@ -43,6 +57,8 @@ async function run() {
 run()
   .then(() => process.exit(0))
   .catch((err) => {
-    console.error("Prerender failed:", err);
-    process.exit(1);
+    // Only reachable if closing the preview server itself throws — still
+    // shouldn't block a deploy over a build-time enhancement step.
+    console.warn("Prerender step failed unexpectedly:", err);
+    process.exit(0);
   });
