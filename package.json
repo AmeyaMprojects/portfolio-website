@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "playwright install chromium",
     "predev": "node scripts/fetch-publications.mjs",
     "dev": "vite",
     "prebuild": "node scripts/fetch-publications.mjs",
