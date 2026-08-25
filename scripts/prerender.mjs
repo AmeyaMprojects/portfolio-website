@@ -1,5 +1,5 @@
 import { preview } from "vite";
-import { chromium } from "playwright";
+import { chromium } from "playwright-core";
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
@@ -10,11 +10,29 @@ import path from "node:path";
  * on the first fetch instead of an empty <div id="root">. React hydrates
  * over this markup on the client exactly as it would over its own render.
  *
- * Best-effort: some CI build images (Vercel's included) don't ship the
- * shared libraries Chromium needs to launch. If that happens here, we log
- * why and leave dist/index.html as the plain client-rendered shell rather
- * than failing the whole deploy over an enhancement step.
+ * Vercel's build image is missing shared libs (libnspr4 etc.) that a
+ * regular Playwright-downloaded Chromium needs to launch, so on Vercel we
+ * launch @sparticuz/chromium's build instead — compiled specifically for
+ * minimal serverless/CI containers. Locally, plain Playwright Chromium
+ * (installed via `npm run postinstall`) is used.
+ *
+ * Best-effort either way: if the browser still can't launch for some
+ * unforeseen reason, log why and leave dist/index.html as the plain
+ * client-rendered shell rather than failing the whole deploy over an
+ * enhancement step.
  */
+async function launchBrowser() {
+  if (process.env.VERCEL) {
+    const { default: sparticuzChromium } = await import("@sparticuz/chromium");
+    return chromium.launch({
+      executablePath: await sparticuzChromium.executablePath(),
+      args: sparticuzChromium.args,
+      headless: true,
+    });
+  }
+  return chromium.launch({ args: ["--no-sandbox", "--disable-setuid-sandbox"] });
+}
+
 async function run() {
   const server = await preview({
     preview: { port: 4173, host: "127.0.0.1", strictPort: true },
@@ -22,9 +40,7 @@ async function run() {
   const url = server.resolvedUrls.local[0];
 
   try {
-    const browser = await chromium.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
+    const browser = await launchBrowser();
     try {
       const page = await browser.newPage();
       await page.goto(url, { waitUntil: "networkidle" });
