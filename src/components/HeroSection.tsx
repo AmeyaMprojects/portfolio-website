@@ -80,7 +80,7 @@ const HeroSection = () => {
 
         <motion.p
           className="type-lead mt-5 max-w-xl text-balance text-muted-foreground"
-          initial={{ opacity: 0, y: reduceMotion ? 0 : 14 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={reduceMotion ? { duration: 0.25 } : { ...spring.reveal, delay: 0.12 }}
         >
