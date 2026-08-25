@@ -65,6 +65,7 @@ const HeroSection = () => {
             className="h-24 w-24 rounded-full object-cover shadow-md ring-1 ring-border md:h-28 md:w-28"
             width={112}
             height={112}
+            fetchPriority="high"
           />
         </motion.div>
 

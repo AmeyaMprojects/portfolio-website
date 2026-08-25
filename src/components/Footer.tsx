@@ -27,7 +27,13 @@ const Footer = () => {
   return (
     <footer className="border-t border-border bg-background px-6 py-12">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-6 sm:flex-row sm:justify-between">
-        <img src={logo} alt="Ameya Mhatre" className="h-9 w-auto opacity-80" />
+        <img
+          src={logo}
+          alt="Ameya Mhatre"
+          className="h-9 w-auto opacity-80"
+          width={52}
+          height={36}
+        />
 
         <div className="flex items-center gap-1">
           {socials.map(({ label, href, icon: Icon }) => (

@@ -22,7 +22,7 @@ const projects: ProjectProps[] = [
     description:
       "An automated multi-factor screening engine for cross-market equity analysis. Combines volatility-adjusted pricing, momentum indicators, and a probabilistic scoring matrix to surface mean-reversion and trend-continuation setups. Risk is ATR-anchored — volatility-based stops and multi-tiered profit targets instead of static percentages — with a minimum risk-to-reward threshold enforced before any candidate validates.",
     technologies: ["Python", "FastAPI", "AWS", "Quantitative Modeling"],
-    imageUrl: "/swing-screener.png",
+    imageUrl: "/swing-screener.jpg",
     githubLink: "https://github.com/AmeyaMprojects/swing-screener",
     liveDemoLink: "https://s501e59h91.execute-api.ap-south-1.amazonaws.com",
   },
@@ -31,7 +31,7 @@ const projects: ProjectProps[] = [
     description:
       "A multi-agent financial pipeline orchestrating five specialist agents — fundamentals, valuation, sentiment, risk profiling, synthesis — over live IPO data. Financial ratios (P/E, P/B, ROE, ROCE, debt/equity, CAGR) are computed deterministically and unit-tested, with LLM output confined to explanation, so every number in a report is independently verifiable and traceable to source.",
     technologies: ["Python", "LangGraph", "Gemini", "Web Scraping"],
-    imageUrl: "/ipo-analyzer.png",
+    imageUrl: "/ipo-analyzer.jpg",
     githubLink: "https://github.com/AmeyaMprojects/ipo_analyzer",
     liveDemoLink: "https://ipoanalyzer.streamlit.app/",
   },
@@ -40,7 +40,7 @@ const projects: ProjectProps[] = [
     description:
       "An end-to-end pipeline modelling real 2023 CBA mechanics — rookie scale, max tiers, supermax, Bird rights, the luxury-tax apron — to value contracts against on-court performance rather than raw salary. A ridge-regression market-value model over player-season statistics quantifies surplus and deficit as a share of the salary cap across 101 players and 30 teams.",
     technologies: ["Python", "Pandas", "Ridge Regression", "Web Scraping"],
-    imageUrl: "/nba-contract-analyzer.png",
+    imageUrl: "/nba-contract-analyzer.jpg",
     githubLink: "https://github.com/AmeyaMprojects/Nba-Contract-Analyzer",
     liveDemoLink: "https://ameyamprojects.github.io/Nba-Contract-Analyzer/",
   },
