@@ -14,6 +14,7 @@ interface PublicationProps {
   title: string;
   description: string;
   publishDate: string;
+  publishDateISO: string;
   url: string;
 }
 
@@ -21,6 +22,7 @@ const PublicationCard: React.FC<PublicationProps & { index: number }> = ({
   title,
   description,
   publishDate,
+  publishDateISO,
   url,
   index,
 }) => (
@@ -38,7 +40,9 @@ const PublicationCard: React.FC<PublicationProps & { index: number }> = ({
           <span className="type-caption rounded-full bg-blue/10 px-2.5 py-1 text-blue">
             Substack
           </span>
-          <span className="type-caption text-subtle">{publishDate}</span>
+          <time dateTime={publishDateISO} className="type-caption text-subtle">
+            {publishDate}
+          </time>
         </div>
 
         <h3 className="type-headline text-balance text-foreground">{title}</h3>

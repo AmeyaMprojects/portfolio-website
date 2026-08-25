@@ -49,6 +49,10 @@ function formatDate(pubDate) {
   });
 }
 
+function toISODate(pubDate) {
+  return new Date(pubDate).toISOString().slice(0, 10);
+}
+
 async function main() {
   const response = await fetch(FEED_URL, {
     headers: { "User-Agent": "Mozilla/5.0 (portfolio-build-script)" },
@@ -69,6 +73,7 @@ async function main() {
     title: stripHtml(String(item.title)),
     description: truncate(stripHtml(String(item.description ?? "")), DESCRIPTION_LIMIT),
     publishDate: formatDate(item.pubDate),
+    publishDateISO: toISODate(item.pubDate),
     url: String(item.link),
   }));
 

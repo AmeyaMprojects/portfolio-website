@@ -145,7 +145,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => setIsOpen((v) => !v)}
-              className="pressable-sm flex h-9 w-9 items-center justify-center rounded-full text-foreground md:hidden"
+              className="pressable-sm flex h-11 w-11 items-center justify-center rounded-full text-foreground md:hidden"
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
